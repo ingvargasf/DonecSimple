@@ -33,7 +33,7 @@ Ext.application({
         });*/  
     },
     loadConfig:function(callback){
-        Ext.Ajax.request({
+        /*Ext.Ajax.request({
             scope: this,
             url: Constants.URL_CONFIG_APP,
             params: {
@@ -54,7 +54,7 @@ Ext.application({
                     icon: Ext.Msg.ERROR
                 });
             }
-        });
+        });*/
     }
 
 });

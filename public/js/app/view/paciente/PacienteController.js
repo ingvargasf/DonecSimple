@@ -58,7 +58,7 @@ Ext.define('Admin.view.paciente.PacienteController', {
                     var paciente = responseObject.paciente;
                     var params = paciente;
                     console.log(paciente);
-                    //Msg.info(responseObject.msg);
+                    Msg.info(responseObject.msg);
 
                     grid.getStore().reload();
                 }
@@ -117,5 +117,11 @@ Ext.define('Admin.view.paciente.PacienteController', {
           ]
       }).show();
     },
-
+    onSelect:function(grid, record, index){
+      var me = this.getView(),
+      form = me.down("form"),
+      grid = me.down("grid");
+      console.log(me,form,record);
+      form.getForm().loadRecord(record)
+    }
 });

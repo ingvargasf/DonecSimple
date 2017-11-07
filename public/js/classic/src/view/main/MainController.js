@@ -179,10 +179,10 @@ Ext.define('Admin.view.main.MainController', {
                 if(localStorage.user_id!=undefined){
                     view = hashTag;
                 }else{
-                    view = "login";
+                    view = hashTag;
                 }
             }else{
-               view = "login";
+               view = hashTag;
             }
         }else{
            view = hashTag;

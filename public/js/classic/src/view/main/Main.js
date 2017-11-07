@@ -103,7 +103,7 @@ Ext.define('Admin.view.main.Main', {
                      hrefTarget: '_self',
                      tooltip: 'See your profile'
                  },*/
-                 {
+                 /*{
                      xtype: 'tbtext',
                      bind:{
                          text: '{username}',
@@ -125,7 +125,7 @@ Ext.define('Admin.view.main.Main', {
                              click:'onClickUser'
                          }
                      }
-                 }
+                 }*/
              ]
          },
          {

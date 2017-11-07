@@ -70,16 +70,12 @@ app.on("ready",function(){
 	connection.on('online', () => {
 	  console.log('App is online!')
 	})
-	 
 	connection.on('offline', () => {
 	  	console.log('App is offline!');
 	  	if(!ready){
 		  	createWindow({url:'public/js/index.html#offline'});
 		}
 	});
-
-
-	
 });
 app.on("window-all-closed",()=>{
 	if(process.platform !== 'drawin'){

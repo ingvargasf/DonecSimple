@@ -12,7 +12,7 @@ Ext.define('Admin.view.paciente.pacienteForm', {
         labelWidth: 80,
         msgTarget: 'side',
         layout: 'anchor',
-        columnWidth:1,
+        columnWidth:.5,
         margin:5                            
     },
     buttonAlign:'rigth',                         
@@ -23,16 +23,23 @@ Ext.define('Admin.view.paciente.pacienteForm', {
 
 			items:[
 				{
+					xtype: 'hiddenfield',
+					name: 'id'
+				},
+				{
 				    name: "nombre",
 				    emptyText:"Nombre",
+				    allowBlank:false
 				},
 				{
 				    name: "apellido",
 				    emptyText:       "Apellido",
+				    allowBlank:false
 				},
 				{
 				    name: "documento",
 				    emptyText:       "Documento",
+				    allowBlank:false
 				},
 				{
 				    name: "direccion",
@@ -79,6 +86,7 @@ Ext.define('Admin.view.paciente.pacienteForm', {
 				{
 					xtype: 'datefield',
 					name: 'fecha_ingreso',
+					value:new Date(),
 					emptyText: 'Fecha ingreso'
 				},
 				{
@@ -121,20 +129,26 @@ Ext.define('Admin.view.paciente.pacienteForm', {
 	},
 	guardar:function(self){
 		var me=this,
-		form=self.up('form');
+		form=self.up('form'),
+		grid = form.up().down("grid");
 		if(form.getForm().isValid()){
 			form.getForm().submit({
 				url:Constants.URL_PACIENTE,
 				scope: this,
 				submitEmptyText : false,		
 				success: function(f, action) {
-					form.grid.getStore().reload();
-					self.up('window').close();
+
+
+					grid.getStore().reload();
+					
 					Ext.Msg.show({
 					    title: 'Aviso',
 					    msg: action.result.msg,
 					    buttons: Ext.Msg.OK,
-					    icon: Ext.Msg.INFO                    
+					    icon: Ext.Msg.INFO,
+					    fn:function(){
+					    	form.getForm().reset();
+					    }                    
 					});
 				},
 				failure: function(f, action) {
